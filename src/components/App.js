@@ -1,8 +1,15 @@
-import React from "react";
-import AppRouter from "./Router";
+import React, { useState } from "react";
+import AppRouter from "components/Router";
+import { authService } from "fbase";
 
 function App() {
-    return <AppRouter />;
+    authService.const[(isLoggedIn, setIsLoggedIn)] = useState(false);
+    return (
+        <>
+            <AppRouter isLoggedIn={isLoggedIn} />
+            <footer>&copy; {new Date().getFullYear()} Kwitter</footer>
+        </>
+    );
 }
 
 export default App;
